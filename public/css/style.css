@@ -1,0 +1,9 @@
+@font-face
+{
+	font-family: officieldessorties;
+	src: url(fonts/porkys.ttf);
+}
+
+.title-area > li.name > h1 > a{
+	font-family: officieldessorties !important;
+}

@@ -4,24 +4,34 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
+  , routes  = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , io = require('socket.io')
+  , passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy
   , mongoose = require('mongoose');
 
+
+// connexion a la base de données
 mongoose.connect('mongodb://127.0.0.1/officieldessorties')
 
 var app = express();
+// chargement librairie pour formatage des dates
+app.locals.moment = require('moment');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8080);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.bodyParser());
+  //app.use(express.favicon(__dirname + '/public/images/favicon.ico')));
   app.use(express.methodOverride());
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({ secret: '123officiel--des--sorties456' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -61,8 +71,6 @@ sio.sockets.on('connection', function (socket) {
   });
 });
 
-//Our index page
-
 
 // Homepage
 app.get('/', routes.index);
@@ -76,13 +84,18 @@ app.get('/mon-compte', routes.my_account);
 // Affiche la page de gestion du compte de la personne connectée
 
 app.get('/mes-evenements/nouveau', routes.form_new_event);
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/mes-evenements/supprimer/:id', routes.form_delete_event);
 
 // Affiche la page des condition generales d'utilisation
 app.get('/cgu', routes.cgu);
 
-
 // traitement ajout d'evenement
 app.post('/mes-evenements/ajouter', routes.create_new_event);
+
+// Affiche la page de gestion du compte de la personne connectée
+app.get('/mes-evenements/supprimer/:id', routes.form_delete_event);
+
+// Affiche la page detail ou fiche de 
+app.get('/evenements/fiche/:id', routes.fiche_event);
+
+// 
 

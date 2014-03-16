@@ -22,6 +22,14 @@ block content
 									textarea.small-12.large-12.columns(type="text" id="description" placeholder="Description de votre evenement" name="description")
 						div.row
 							div.small-12.large-12.columns
+								label(for="category") Catégorie <small>obligatoire</small>
+								select(id="category" name="category")
+									option(value='manifestation') Manifestation
+									option(value='concert') Concert
+									option(value='pic-nique') Pic-nique
+									option(value='piscine') Piscine
+						div.row
+							div.small-12.large-12.columns
 								label(for="places") Places disponible <small>obligatoire</small>
 									input.small-5.large-5.columns(type="text" id="places" placeholder="Nombre de place disponible pour votre evenement" name="places" pattern="integer")
 								small.error Le nombre de place disponible est incorrect
@@ -29,6 +37,22 @@ block content
 							div.small-12.large-12.columns
 								input(type="checkbox" id="is_public" name="is_public" checked="checked")
 								label(for="is_public") Rendre public ?
+
+						div.row
+							div.small-12.large-12.columns.title-field
+								label(for="address") Adresse <small>obligatoire</small>
+									input.small-12.large-12.columns(type="text" id="title" placeholder="Adresse de votre evenement" name="address" required pattern="alpha_numeric")
+								small.error L'adresse doit contenir que des caractère alpha numérique
+						div.row
+							div.small-12.large-12.columns.title-field
+								label(for="city") Ville <small>obligatoire</small>
+									input.small-12.large-12.columns(type="text" id="title" placeholder="Ville de votre evenement" name="city" required pattern="alpha")
+								small.error La ville doit contenir que des lettres
+						div.row
+							div.small-12.large-12.columns.title-field
+								label(for="zipcode") Code Postal <small>obligatoire</small>
+									input.small-12.large-12.columns(type="text" id="title" placeholder="Code postal de votre evenement" name="zipcode" required pattern="alpha_numeric")
+								small.error Le code postal doit contenir que des chiffres
 
 
 						div.row

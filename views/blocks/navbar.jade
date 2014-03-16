@@ -4,6 +4,12 @@ div#connexionModal.reveal-modal(data-reveal)
 div#loginModal.reveal-modal(data-reveal)
 	h2 Login
 		p Bibi elle pu
+
+// Affiche un item menu actif ou pas
+mixin item(title, url)
+	li(class=active == title ? 'active' : '')
+		a(href=url)= title
+
 nav.top-bar(data-topbar)
 	ul.title-area
 		li.name
@@ -16,9 +22,10 @@ nav.top-bar(data-topbar)
 			li.has-form
 				a.x-small.button(href="/mes-evenements/nouveau") Créer un évenement
 			li.divider
-			li: a(href="/mon-compte") Mon compte
+			+item('Mon compte', '/mon-compte')
+				//a(href="/mon-compte") Mon compte
 			li.divider
-			li: a(href="/mes-evenements") Mes évenements 
+			+item('Mes événements', '/mes-evenements')
 				span.round.label #{count_my_event}
 		ul.right
 			li.has-form

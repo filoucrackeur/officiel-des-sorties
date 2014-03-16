@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 
 var eventsSchema = new Schema({
 	title:       { type: String, required: true }, // Titre de l'evenement
-	description: String, // Description de l'evenement
+	description: { type: String, required: true }, // Description de l'evenement
+	category: 	 { type: String, required: true },
 	places: 	 Number, // Nombre de place
 	created_at:  { type: Date, default: Date.now },   // Date de creation de l'evenement
 	updated_at:  { type: Date, default: Date.now },
@@ -13,10 +14,11 @@ var eventsSchema = new Schema({
 	end_at:      { type: Date },   // Date de fin de l'evenement
 	owner: 		 String, // Identifiant du createur de l'evenement
 	is_public:   Boolean,// Evenement public ou privé ?
-	address:     String, // Adresse de l'evenement ou du rendez vous
-	city:        String, // Ville de l'evenement ou du rendez vous
-	state:       String, // Région de l'evenement ou du rendez vous
-	country:     String, // Pays de l'evenement ou du rendez vous
+	address:     { type: String, required: true },  // Adresse de l'evenement ou du rendez vous
+	city:        { type: String, required: true }, // Ville de l'evenement ou du rendez vous
+	zipcode:     { type: String, required: true }, // Code postal de l'evenement ou du rendez vous
+	//state:       { type: String, required: true }, // Région de l'evenement ou du rendez vous
+	//country:     { type: String, required: true }, // Pays de l'evenement ou du rendez vous
 	locked:      Boolean,// Evenement bloqué? 
 	archived:    Boolean // Evenement Archivé passé ?
 });

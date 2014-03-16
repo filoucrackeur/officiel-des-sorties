@@ -20,9 +20,9 @@ block content
 							each ev in events
 								tr
 									td 
-										a(href='/mes-evenements/detail/#{ev._id}' ) #{ev.title}
+										a(href='/evenements/fiche/#{ev._id}' ) #{ev.title}
 									td.show-for-large-only #{ev.description}
-									td.text-center #{ev.created_at}
+									td.text-center #{moment(ev.created_at).format('DD/MM/YYYY')}
 									td.text-center
 										a(data-dropdown="drop"): span.round.label.secondary inscriptions ouvertes
 										ul.f-dropdown(id="drop" data-dropdown-content)
