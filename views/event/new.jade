@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+	div.row
+		div.small-12.large-12.columns
+			h1 Nouvel évenement
+			hr
+	div.row
+		div.small-12.large-12.columns
+			form(method="post" action="/mes-evenements/ajouter" data-abide)
+					fieldset
+						legend Etape 1 : Identification
+
+						div.row
+							div.small-12.large-12.columns.title-field
+								label(for="title") Titre <small>obligatoire</small>
+									input.small-12.large-12.columns(type="text" id="title" placeholder="Titre de votre evenement" name="title" required pattern="alpha_numeric")
+								small.error Votre titre doit contenir que des caractère alpha numérique
+						div.row
+							div.small-12.large-12.columns
+								label(for="description") Description <small>obligatoire</small>
+									textarea.small-12.large-12.columns(type="text" id="description" placeholder="Description de votre evenement" name="description")
+						div.row
+							div.small-12.large-12.columns
+								label(for="places") Places disponible <small>obligatoire</small>
+									input.small-5.large-5.columns(type="text" id="places" placeholder="Nombre de place disponible pour votre evenement" name="places" pattern="integer")
+								small.error Le nombre de place disponible est incorrect
+						div.row
+							div.small-12.large-12.columns
+								input(type="checkbox" id="is_public" name="is_public" checked="checked")
+								label(for="is_public") Rendre public ?
+
+
+						div.row
+							div.small-12.large-12.columns
+								button.button.right(type="submit") Etape 2

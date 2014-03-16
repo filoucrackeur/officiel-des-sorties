@@ -11,6 +11,8 @@
     "jade": "*",
     "mongoose": "*",
     "socket.io": "*",
-    "livereload": "*"
+    "livereload": "*",
+    "moment": "~2.5.1",
+    "paginate": "~0.1.1"
   }
 }

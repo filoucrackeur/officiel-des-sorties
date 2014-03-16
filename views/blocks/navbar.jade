@@ -1,13 +1,27 @@
-div.navbar.navbar-default.navbar-static-top(role="navigation")
-	div.container-fluid
-		div.navbar-header
-			button.navbar-toggle(data-toggle="collapse", type="button", data-target=".navbar-collapse")
-				span.sr-only Toggle navigation
-				span.icon-bar
-				span.icon-bar
-				span.icon-bar
-			a.navbar-brand(href="#") Officiel des sorties
-		div.collapse.navbar-collapse
-			ul.nav.navbar-nav
-				li.active: a(href="/mon-compte") Mon compte
-				li: a(href="/mes-evenements") Mes evenement
+div#connexionModal.reveal-modal(data-reveal)
+	h2 Connexion
+		p Bibi elle pu
+div#loginModal.reveal-modal(data-reveal)
+	h2 Login
+		p Bibi elle pu
+nav.top-bar(data-topbar)
+	ul.title-area
+		li.name
+			h1
+				a(href='/') Officiel des sorties
+		li.toggle-topbar.menu-icon
+			a(href="#")
+	section.top-bar-section
+		ul.left
+			li.has-form
+				a.x-small.button(href="/mes-evenements/nouveau") Créer un évenement
+			li.divider
+			li: a(href="/mon-compte") Mon compte
+			li.divider
+			li: a(href="/mes-evenements") Mes évenements 
+				span.round.label #{count_my_event}
+		ul.right
+			li.has-form
+				a.x-small.button(href='#'  data-reveal-id="connexionModal") Connexion
+			li.has-form
+				a.x-small.button(href='#'  data-reveal-id="loginModal") Login

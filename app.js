@@ -8,14 +8,10 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , mongoose = require('mongoose')
   , io = require('socket.io')
-  , mongoURI =  process.env.MONGOLAB_URI || 'mongodb://localhost/evenements'
-  , db = mongoose.connect(mongoURI)
-  , Schema = mongoose.Schema
-  , ObjectID = Schema.ObjectId
-  , Evenement = require('./models/evenements.js').init(Schema, mongoose);
+  , mongoose = require('mongoose');
 
+mongoose.connect('mongodb://127.0.0.1/officieldessorties')
 
 var app = express();
 
@@ -24,7 +20,6 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
-  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -32,9 +27,11 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
+  app.use(express.logger('dev'));
   app.use(express.errorHandler());
 });
 
+// Lancement du serveur
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
@@ -44,8 +41,6 @@ var sio = io.listen(server);
 //User online user count variable
 var users = 0;
 
-//Configure the socket.io connection settings.
-        //See http://socket.io/
 sio.configure(function (){
   sio.set('log level', 0);
   sio.set('authorization', function (handshakeData, callback) {
@@ -68,6 +63,26 @@ sio.sockets.on('connection', function (socket) {
 
 //Our index page
 
-app.get('/mes-evenements', routes.mes_evenements);
-app.get('/mon-compte', routes.mon_compte);
+
+// Homepage
 app.get('/', routes.index);
+
+// Liste de evenements de la personne connectée
+app.get('/mes-evenements', routes.my_events);
+
+// Affiche la page de gestion du compte de la personne connectée
+app.get('/mon-compte', routes.my_account);
+
+// Affiche la page de gestion du compte de la personne connectée
+
+app.get('/mes-evenements/nouveau', routes.form_new_event);
+// Affiche la page de gestion du compte de la personne connectée
+app.get('/mes-evenements/supprimer/:id', routes.form_delete_event);
+
+// Affiche la page des condition generales d'utilisation
+app.get('/cgu', routes.cgu);
+
+
+// traitement ajout d'evenement
+app.post('/mes-evenements/ajouter', routes.create_new_event);
+

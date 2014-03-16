@@ -1,0 +1,38 @@
+extends layout
+
+block content
+		div.row
+			div.small-12.large-12.columns
+					h1 Mes évenements 
+						span.round.label 45
+					hr
+		div.row
+			div.small-12.large-12.columns
+				table.small-12.large-12.columns
+					tr
+						th Titre
+						th.show-for-large-only Description
+						th.text-center Date
+						th.text-center Status
+						th 
+						- console.log(events)
+						- if( events !== null && events.length > 0)
+							each ev in events
+								tr
+									td 
+										a(href='/mes-evenements/detail/#{ev._id}' ) #{ev.title}
+									td.show-for-large-only #{ev.description}
+									td.text-center #{ev.created_at}
+									td.text-center
+										a(data-dropdown="drop"): span.round.label.secondary inscriptions ouvertes
+										ul.f-dropdown(id="drop" data-dropdown-content)
+											li: a tptp
+											li: a tktkt
+											li: a tkkt
+
+									td.text-center  
+										a(href='/mes-evenements/supprimer/#{ev._id}' ) &times;
+						- else
+							tr
+								td.text-center(colspan='5') Aucun evenement pour le moment
+		include blocks/online

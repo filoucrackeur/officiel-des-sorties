@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	div.row
+		div.small-12.large-12.columns
+			h1 Mon compte
+				hr
+	div.row
+		div.small-12.large-12.columns
+			dl.tabs(data-tab)
+				dd.active
+					a(href="#panel2-1") Mes coordonnées
+				dd
+					a(href="#panel2-2") Parametrage
+				dd
+					a(href="#panel2-3") Autorisations
+			div.tabs-content
+				div.content.active(id="2-1") TEST
+				div.content(id="2-2") TOTO
+				div.content(id="2-3") TITI
+	include blocks/online
