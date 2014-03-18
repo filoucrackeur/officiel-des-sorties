@@ -23,4 +23,6 @@ var eventsSchema = new Schema({
 	archived:    Boolean // Evenement Archivé passé ?
 });
 
-module.exports = mongoose.model('Event', eventsSchema);;
+
+
+module.exports = mongoose.model('Event', eventsSchema);

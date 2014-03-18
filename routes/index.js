@@ -14,7 +14,8 @@ exports.my_events = function(req, res){
   res.status(200);
   Event.find(function(err, events){
   	res.render('my_events', { 
-  		title: 'Mes événéments | '+sitename , 
+  		title: 'Mes événéments', 
+      sitename: sitename,
   		events: events, 
   		count_my_event: count_my_event,
       active: 'Mes événements'
@@ -24,7 +25,7 @@ exports.my_events = function(req, res){
 
 exports.form_new_event = function(req, res){
   res.status(200);
-  res.render('event/new', { title: 'Créer un nouvel evenement | '+sitename });
+  res.render('event/new', { title: 'Créer un nouvel evenement', sitename: sitename });
 };
 
 // Suppression d'un evenement
@@ -43,11 +44,11 @@ exports.form_delete_event = function(req, res){
 // Affichage de la fiche d'un evenement
 exports.fiche_event = function(req, res){
   res.status(200);
-  Event.findOne({id: req.query.id}, function(err, event){
+  Event.findOne({_id: req.params.id}, function(err, event){
 
     if (err){throw err;}
     else {
-      res.render('event/fiche', { title: event.title+' | '+sitename, event: event });
+      res.render('event/fiche', { title: event.title, sitename: sitename, event: event });
     }
   });
 };
@@ -76,11 +77,24 @@ exports.create_new_event = function(req, res){
 // Page mon compte
 exports.my_account = function(req, res){
   res.status(200);
-  res.render('my_account', { title: 'Mon compte | '+sitename, active: 'Mon compte' });
+  res.render('my_account', { title: 'Mon compte ', sitename: sitename, active: 'Mon compte' });
 };
 
 exports.cgu = function(req, res){
   res.status(200);
-  res.render('my_account', { title: 'Conditions général d\'utilisation | '+sitename });
+  res.render('my_account', { title: 'Conditions général d\'utilisation', sitename: sitename });
+};
+
+exports.find_out = function(req, res){
+  res.status(200);
+  Event.find(function(err, events){
+    res.render('page/find_out', { 
+      title: 'Trouver une sortie', 
+      sitename: sitename,
+      events: events, 
+      count_my_event: count_my_event,
+      active: 'Trouver une sortie'
+    });
+  });
 };
 

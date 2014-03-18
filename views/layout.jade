@@ -2,48 +2,59 @@ doctype html
 //[if IE 9]><html class="lt-ie10 lang="en"><![endif]
 html.no-js(lang='en')
 	head
-		title= title
+		title= title + ' | ' + sitename
 		meta(charset='utf-8')
 		meta(name='viewport' content='width=device-width, initial-scale=1.0')
 		link(rel='stylesheet', href='/css/foundation.min.css')
 		link(rel='stylesheet', href='/css/normalize.css')
+		link(rel='stylesheet', href='/css/foundation.datatables.css')
+		link(rel='stylesheet', href='/css/foundation-glyphicons/stylesheets/foundation-glyphicons.css')
 		//link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Montserrat+Subrayada' type='text/css')
 		link(rel='stylesheet', href='/css/style.css')
 		script(src="/js/vendor/modernizr.js")
-	body
+	body.off-canvas.hide-extras.antialiased
 		include blocks/navbar
 
 		block flash_message
 
 		block content
 		footer
-			div.row
-				hr
-				div.small-4.large-4.column
-					ul.no-bullet
-						li: a: small Questions fréquente
-						li: a: small Nous contacter
-						li: a: small Qui sommmes-nous
-						li: a: small Presse
-				div.small-4.large-4.column
-					ul.no-bullet
-						li: a: small Cgu
-						li: a: small Cgv
-						li: a: small Réseaux sociaux
-						li: a: small Applications mobile
-				div.small-4.large-4.column
-					ul.no-bullet
-						li: a: small Newsletter
-						li: a: small Nos partenaires
-						li: a: small Publicité
-						li: a: small Témoignoiges
-			div.row
-				div.small-12.large-12
-					p.text-center: small Copyright 2014 Philippe COURT www.officiel-des-sorties.fr | all rights reserved
-					
+			div.footer
+				div.row
+					div.small-4.large-2.column
+						ul.no-bullet
+							li: a(href='/faq'): small Questions fréquente
+							li: a(href='/nous-contacter'): small Nous contacter
+							li: a(href='/qui-sommes-nous'): small Qui sommmes-nous
+							li: a(href='/presse'): small Presse
+					div.small-4.large-2.column
+						ul.no-bullet
+							li: a(href='/cgu'): small CGU
+							li: a(href='/cgv'): small CGV
+							li: a: small Réseaux sociaux
+							li: a(href='/mobile'): small Applications mobile
+					div.small-4.large-2.column
+						ul.no-bullet
+							li: a(href='/newsletter'): small Newsletter
+							li: a(href='/nos-partenaires'): small Nos partenaires
+							li: a(href='/publicite'): small Publicité
+							li: a(href='/temoignage'): small Témoignages
+					div.small-4.large-2.column 
+
+			div.footer-bottom
+				div.row
+					div.small-12.large-12
+						p.text-center: small Copyright 2014 Philippe COURT 
+							a www.officiel-des-sorties.fr 
+							| all rights reserved
+		
+		script(src="https://maps.googleapis.com/maps/api/js?sensor=false&language=fr")
 		script(src="/js/vendor/jquery.js")
+		script(src="/js/vendor/jquery.dataTables.min.js")
 		script(src="/js/vendor/fastclick.js")
 		script(src="/js/foundation.min.js")
+		script(src="/js/foundation/foundation.equalizer.js")
 		script(src="/js/foundation/foundation.abide.js")
+		script(src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js")
 		script(src="/socket.io/socket.io.js")
 		script(src="/js/app.js")

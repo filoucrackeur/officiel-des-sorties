@@ -3,10 +3,15 @@ extends layout
 block content
 	div.row
 		div.small-12.large-12.columns
-			h1 Mon compte
+			h1 #{title}
 				hr
 	div.row
 		div.small-12.large-12.columns
+			//p #{user.local.email}
+			- if (user.facebook)
+				img(src="https://graph.facebook.com/" + user.facebook.id + "/picture")
+				p #{user.facebook.name}
+				p #{user.facebook.email}
 			dl.tabs(data-tab)
 				dd.active
 					a(href="#panel2-1") Mes coordonnées
