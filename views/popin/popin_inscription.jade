@@ -1,0 +1,21 @@
+div#inscriptionModal.reveal-modal.tiny(data-reveal)
+	h2 Inscription
+		form(method="post" action="/inscription")
+			label
+				input(type="text" id="lastname" name="lastname" placeholder="Nom")
+			label
+				input(type="text" id="firstname" name="firstname" placeholder="Prénom")
+			label Sex
+				input(type="radio" id="sex_f" name="sex" value='F')
+				input(type="radio" id="sex_h" name="sex" value='M')
+			label
+				input(type="text" id="email" name="email" placeholder="Email")
+			label
+				input(type="password" id="password" name="password" placeholder="Mot de passe")
+			label
+				input(type="text" id="pseudo" name="pseudo" placeholder="Choisir un pseudo")
+			label
+				input(type="text" id="birth" name="birth" placeholder="Date de naissance")
+			input.button(type="submit" value="Finaliser mon inscription")
+	hr
+	p Vous avez déjà un compte ? <a href="/connexion" data-reveal-id="connexionModal">Se connecter</a>

@@ -1,0 +1,38 @@
+extends layout
+
+block content
+		div.row
+			div.small-12.large-12.columns
+					h1 #{title}
+					hr
+		div.row
+			div.small-12.large-12.columns
+				table#tab-mes-evenenements.small-12.large-12.columns
+					thead
+						tr
+							th Titre
+							th.show-for-large-only Description
+							th.text-center Date
+							th.text-center Status
+							th
+					tbody
+						- if( evenements !== null && evenements.length > 0)
+							each evenement in evenements
+								tr
+									td
+										a(href='/evenement/fiche/#{evenement._id}' ) #{evenement.title}
+									td.show-for-large-only #{evenement.description}
+									td.text-center #{moment(evenement.created_at).format('DD/MM/YYYY')}
+									td.text-center
+										a(data-dropdown="drop"): span.round.label.secondary inscriptions ouvertes
+										ul.f-dropdown(id="drop" data-dropdown-content)
+											li: a Fermé
+											li: a Ouvert
+											li: a Annulé
+											li: a Reporté
+
+									td.text-center  
+										a(href='/evenement/supprimer/#{evenement._id}' ) &times;
+						- else
+							tr
+								td.text-center(colspan='5') Aucun evenement pour le moment

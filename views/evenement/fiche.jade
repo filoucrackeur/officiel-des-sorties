@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+	div.row
+		div.small-12.large-12.columns
+			h1 #{evenement.title}
+			hr
+	div.row
+		div.small-12.large-8.columns
+			p #{evenement.description}
+			p #{evenement.category}
+		div.small-12.large-4.columns
+			div.panel 
+				div#apercu-carte(style="height:220px;width:100%;" onload="TrouverAdresse()" data-adresse="117 rue de paris charenton le pont")
+				
+			h5 #{evenement.title}
+			hr
+			p #{evenement.description}
+			p #{evenement.category}
+			p #{evenement.address}
+			p #{evenement.city}
+			p #{evenement.zipcode}

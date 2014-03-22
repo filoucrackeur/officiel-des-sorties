@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	div.row
+		div.small-12.large-12.columns
+			h1 #{title}
+				hr
+	div.row
+		div.small-12.large-12.columns
+			//p #{utilisateur.local.email}
+			- if (utilisateur.facebook)
+				img(src="https://graph.facebook.com/" + utilisateur.facebook.id + "/picture")
+				p #{utilisateur.facebook.name}
+				p #{utilisateur.facebook.email}
+			- else if (utilisateur.local)
+				p #{utilisateur.local.email}
+			dl.tabs(data-tab)
+				dd.active
+					a(href="#panel2-1") Mes coordonnées
+				dd
+					a(href="#panel2-2") Parametrage
+				dd
+					a(href="#panel2-3") Autorisations

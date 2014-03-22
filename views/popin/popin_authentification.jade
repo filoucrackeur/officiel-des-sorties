@@ -1,0 +1,12 @@
+div#connexionModal.reveal-modal.tiny(data-reveal)
+	h2 S'identifier
+		form(method="post" action="/connexion")
+			label
+				input(type="text" id="email" name="email" placeholder="Email")
+			label
+				input(type="password" id="password" name="password" placeholder="Mot de passe")
+			input.button(type="submit" value="Se connecter")
+		p
+			a(href="/auth/facebook") 
+				span.gicon-facebook
+				span  Se connecter avec Facebook
