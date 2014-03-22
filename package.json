@@ -11,7 +11,7 @@
     "jade": "*",
     "mongoose": "*",
     "socket.io": "*",
-    "nodemon": "*",
+    "nodemon": "~1.0.16",
     "moment": "~2.5.1",
     "passport": "~0.2.0",
     "passport-local": "~1.0.0",

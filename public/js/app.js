@@ -68,8 +68,12 @@ function TrouverAdresse() {
 
 
 		socketActions: function(){
-			 socket.on('count', function (data) {
-			    $('#online').html(data.count);
+			 socket.on('utilisateurs_connectes', function (data) {
+
+          alertify.log("Une personne consulte votre évenement", 'standard', 5000);
+          alertify.log("Une personne viens de s\'inscrire à votre évenement", 'standard', 5000);
+
+			    $('#online').html(data.utilisateurs_connectes);
 			  });
 		}
 

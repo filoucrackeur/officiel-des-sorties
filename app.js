@@ -1,11 +1,5 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express')
   , routes  = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , io = require('socket.io')
@@ -49,13 +43,14 @@ app.configure('development', function(){
 
 // Lancement du serveur
 var server = http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  console.log("Serveur démarré sur le port " + app.get('port'));
 });
 
 
 var sio = io.listen(server);
-//User online user count variable
-var users = 0;
+
+// nombre d'utilisateur connecté
+var utilisateurs_connectes = 0;
 
 sio.configure(function (){
   sio.set('log level', 0);
@@ -65,48 +60,19 @@ sio.configure(function (){
 });
 
 sio.sockets.on('connection', function (socket) {
-  users++;
-  socket.emit('count', { count: users });
-  socket.broadcast.emit('count', { count: users });
+  
+  utilisateurs_connectes++;
 
-//disconnect state
+  socket.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
+  socket.broadcast.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
+
   socket.on('disconnect', function(){
-    users--;
-    socket.emit('count', { count: users });
-    socket.broadcast.emit('count', { count: users });
+    utilisateurs_connectes--;
+    socket.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
+    socket.broadcast.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
   });
 });
 
-
 // routes ======================================================================
-require('./routes/auth.js')(app, passport);
+require('./routes/auth.js')(app, passport, routes);
 
-// Homepage
-app.get('/', routes.index);
-
-// Liste les categories pour debuter la recherche
-app.get('/trouver-une-sortie', routes.find_out);
-
-// Liste de evenements de la personne connectée
-app.get('/mes-evenements', routes.my_events);
-
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/mon-compte', routes.my_account);
-
-// Affiche la page formulaire d'ajout nouvel evenement
-app.get('/mes-evenements/nouveau', routes.form_new_event);
-
-// Affiche la page des condition generales d'utilisation
-app.get('/cgu', routes.cgu);
-
-// traitement ajout d'evenement
-app.post('/mes-evenements/ajouter', routes.create_new_event);
-
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/mes-evenements/supprimer/:id', routes.form_delete_event);
-
-// Affiche la page detail ou fiche de 
-app.get('/evenement/fiche/:id', routes.fiche_event);
-
-// Page 404
-//app.get('*', routes.not_found);

@@ -2,24 +2,12 @@ extends layout
 
 block content
 	div.row(data-equalizer)
-		div.large-3.medium-4.column(data-equalizer-watch)
-			div.hide-for-small
-				div
-					h3 Recherche
-					p Trouvez un évenement qui vous correspond
-					a.button Trouver !
-				div
-					h2 Recherche
-					p Trouvez un évenement qui vous correspond
-					a.button Trouver
-				div
-					h2 Recherche
-					p Trouvez un évenement qui vous correspond
-					a.button Trouver
-
-		div.large-9.medium-8.column(data-equalizer-watch)
-				div
-					h2 Recherche
-					p Trouvez un évenement qui vous correspond
-					a.button Trouver
-	include blocks/online
+		div.large-8.medium-8.column(data-equalizer-watch)
+			div
+				h4 Bienvenue sur l'officiel des sorties
+		div.large-4.medium-4.column(data-equalizer-watch)
+			div.panel.text-center
+				h4 Pas encore inscrit(e) ?
+				p Cela prend 20 secondes pour pouvoir ensuite s'inscrire à n'importe quel événement
+				a.button(href='#'  data-reveal-id="inscriptionModal") 	<span class="gicon-edit gicon-white large"></span> S'inscrire
+				
