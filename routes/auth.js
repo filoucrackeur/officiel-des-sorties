@@ -1,33 +1,8 @@
-module.exports = function(app, passport, routes) {
-// Page d'accueil racine du site
-app.get('/', routes.index);
+module.exports = function(app, passport) {
 
-// Liste les categories pour debuter la recherche
-app.get('/trouver-une-sortie', routes.action_trouver_une_sortie);
 
-// Liste de evenements de la personne connectée
-app.get('/mes-evenements', routes.action_mes_evenements);
-
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/mon-compte', routes.action_mon_compte);
-
-// Affiche la page formulaire d'ajout nouvel evenement
-app.get('/mes-evenements/nouveau', routes.action_formulaire_evenement_nouveau);
-
-// Affiche la page des condition generales d'utilisation
-app.get('/conditions-generales-d-utilisation', routes.action_afficher_cgu);
-
-// traitement ajout d'evenement
-app.post('/evenement/ajouter', routes.action_creer_evenement);
-
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/evenement/supprimer/:id', routes.action_supprimer_evenement);
-
-// Affiche la page detail ou fiche de 
-app.get('/evenement/fiche/:id', routes.action_afficher_evenement);
-
-// Page 404
-//app.get('*', routes.not_found);
+	// Page 404
+	//app.get('*', routes.not_found);
 	// process the signup form
 	// app.post('/signup', do all our passport stuff here);
 

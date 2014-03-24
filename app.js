@@ -13,9 +13,6 @@ mongoose.connect('mongodb://127.0.0.1/officieldessorties')
 
 require('./fixtures/fixtures.js');
 
-// chargement du system d'authentification
-require('./config/passport')(passport);
-
 var app = express();
 
 // chargement librairie pour formatage des dates
@@ -47,32 +44,98 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 
-var sio = io.listen(server);
+
+// chargement du system d'authentification
+require('./config/passport')(passport);
 
 // nombre d'utilisateur connecté
-var utilisateurs_connectes = 0;
+var connectes = 0;
 
-sio.configure(function (){
-  sio.set('log level', 0);
-  sio.set('authorization', function (handshakeData, callback) {
-   callback(null, true); // error first callback style
-  });
-});
+// nombre d'utilisateur connecté
+var visiteurs = 0;
+
+// nombre d'évenement en cours
+var nb_evenements_en_cours = 0;
+
+// nombre d'évenement en cours de l'utilisateur
+var nb_evenements_en_cours_utilisateur = 0;
+
+
+var sio = io.listen(server);
+
 
 sio.sockets.on('connection', function (socket) {
-  
-  utilisateurs_connectes++;
 
-  socket.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
-  socket.broadcast.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
+  visiteurs++;
+
+  socket.emit('nouveau_visiteur', { visiteurs: visiteurs });
+  socket.broadcast.emit('nouveau_visiteur', { visiteurs: visiteurs });
 
   socket.on('disconnect', function(){
-    utilisateurs_connectes--;
-    socket.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
-    socket.broadcast.emit('utilisateurs_connectes', { utilisateurs_connectes: utilisateurs_connectes });
+    visiteurs--;
+    socket.emit('nouveau_visiteur', { visiteurs: visiteurs });
+    socket.broadcast.emit('nouveau_visiteur', { visiteurs: visiteurs });
   });
 });
 
 // routes ======================================================================
-require('./routes/auth.js')(app, passport, routes);
+require('./routes/auth.js')(app, passport);
+// Page d'accueil racine du site
+app.get('/', routes.index);
 
+// Liste les categories pour debuter la recherche
+app.get('/trouver-une-sortie', routes.trouver_une_sortie);
+
+// Liste de evenements de la personne connectée
+app.get('/mes-evenements', routes.mes_evenements);
+
+// Affiche la page de gestion du compte de la personne connectée
+app.get('/mon-compte', routes.mon_compte);
+
+// Affiche la page formulaire d'ajout nouvel evenement
+app.get('/mes-evenements/nouveau', routes.formulaire_evenement_nouveau);
+
+// Affiche la page des condition generales d'utilisation
+app.get('/conditions-generales-d-utilisation', routes.cgu);
+
+// Affiche la page des condition generales de vente
+app.get('/conditions-generales-de-vente', routes.cgv);
+
+// Affiche la page des questions frequentes
+app.get('/questions-frequentes', routes.faq);
+
+// Affiche la page qui sommes nous
+app.get('/qui-sommes-nous', routes.qui_sommes_nous);
+
+// Affiche la page publicite
+app.get('/publicite', routes.publicite);
+
+// Affiche la page newsletter
+app.get('/newsletter', routes.newsletter);
+
+// Affiche la page témoignage
+app.get('/temoignages', routes.temoignages);
+
+// Affiche la page nous contacter
+app.get('/nous-contacter', routes.nous_contacter);
+
+// Affiche la page applications mobile
+app.get('/applications-mobile', routes.applications_mobile);
+
+// Affiche la page réseaux sociaux
+app.get('/reseaux-sociaux', routes.reseaux_sociaux);
+
+// Affiche la page nos partenaires
+app.get('/nos-partenaires', routes.nos_partenaires);
+
+// Affiche la page de presse
+app.get('/presse', routes.presse);
+
+// traitement ajout d'evenement
+app.post('/evenement/ajouter', routes.creer_evenement);
+
+// Affiche la page de gestion du compte de la personne connectée
+app.get('/evenement/supprimer/:id', routes.supprimer_evenement);
+
+// Affiche la page detail ou fiche de 
+app.get('/evenement/fiche/:id', routes.evenement);

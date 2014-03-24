@@ -35,12 +35,23 @@ function TrouverAdresse() {
 }
 */
 
-
+ $(window).bind("load", function () {
+    var footer = $("footer");
+    var pos = footer.position();
+    var height = $(window).height();
+    height = height - pos.top;
+    height = height - footer.height();
+    if (height > 0) {
+        footer.css({
+            'margin-top': height + 'px'
+        });
+    }
+  });
 
 	$(document).foundation();
 
 
-	$('#tab-my-events').dataTable({
+	$('#tab-mes-evenements').dataTable({
 		"bPaginate": true,
 			"oLanguage": {
 				"oPaginate" : {
@@ -57,6 +68,7 @@ function TrouverAdresse() {
                 null
             ]
         } );
+  
 	//client side socket.io
 	//var socket = io.connect('http://ishuah.com:8080');
 	var socket = io.connect();
@@ -67,17 +79,18 @@ function TrouverAdresse() {
 		},
 
 
-		socketActions: function(){
-			 socket.on('utilisateurs_connectes', function (data) {
+    socketActions: function(){
+       socket.on('nouveau_visiteur', function (data) {
 
-          alertify.log("Une personne consulte votre évenement", 'standard', 5000);
-          alertify.log("Une personne viens de s\'inscrire à votre évenement", 'standard', 5000);
+          //alertify.log("Vous êtes connecté", 'standard', 5000);
+          $('#visiteurs').html(data.visiteurs);
+        });
+       socket.on('nouveau_connecte', function (data) {
 
-			    $('#online').html(data.utilisateurs_connectes);
-			  });
-		}
-
-
+          //alertify.log("Vous êtes connecté", 'standard', 5000);
+          $('#connectes').html(data.connectes);
+        });
+    }
 	};
 
 	window.App = app.init();

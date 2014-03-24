@@ -3,20 +3,36 @@ extends ../layout
 block content
 	div.row
 		div.small-12.large-12.columns
-			h1 #{evenement.title}
+			h1 #{evenement.title} 
+				span.label 45 places disponibles
 			hr
 	div.row
 		div.small-12.large-8.columns
+			h4 Informations Pratiques
 			p #{evenement.description}
 			p #{evenement.category}
+
+			h4 Liste des inscrits
 		div.small-12.large-4.columns
-			div.panel 
-				div#apercu-carte(style="height:220px;width:100%;" onload="TrouverAdresse()" data-adresse="117 rue de paris charenton le pont")
-				
-			h5 #{evenement.title}
-			hr
-			p #{evenement.description}
-			p #{evenement.category}
-			p #{evenement.address}
-			p #{evenement.city}
-			p #{evenement.zipcode}
+			div.panel
+				a.button.expand Je souhaite 
+					strong participer
+				h4 Lieu du rendez-vous
+				div 
+					div#apercu-carte(style="height:220px;width:100%;" onload="TrouverAdresse()" data-adresse="117 rue de paris charenton le pont")
+			div.panel
+				h4 Contacter l'organisateur
+				table
+					thead
+						tr
+							th Catégories
+							td #{evenement.category}
+						tr
+							th Adresse
+							td #{evenement.address}
+						tr
+							th Ville
+							td #{evenement.city}
+						tr
+							th Code postal
+							td #{evenement.zipcode}

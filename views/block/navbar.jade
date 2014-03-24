@@ -5,43 +5,46 @@ mixin item(title, url, icon)
 			span(class=icon)
 			span= title
 
-nav.top-bar(data-topbar)
-	ul.title-area
-		li.name
-			h1
-				a(href='/') Officiel des sorties
-		li.toggle-topbar.menu-icon
-			a(href="#")
-	section.top-bar-section
-		ul.left
-			li.has-form
-				a.x-small.button(href="/mes-evenements/nouveau") 
-					span.gicon-edit.gicon-white
-					span  Créer un évenement
+.row
+	h1.sitename: a(href="/") L'officiel des <span class="fg-rose">sorties</span>
+.row
+	nav.top-bar(data-topbar)
+		ul.title-area
+			li.toggle-topbar.menu-icon
+				a(href="#")
+		section.top-bar-section
+			ul.left
+				- if (utilisateur)
+					li.has-form
+						a.x-small.button(href="/mes-evenements/nouveau") 
+							span.gicon-edit.gicon-white
+							span  Créer un évenement
 
-			+item(' Trouver une sortie', '/trouver-une-sortie','gicon-search gicon-white')
-			li.divider
-			+item(' Mon planning', '/mon-planning','gicon-calendar gicon-white')
-			li.divider
-			+item(' Mes événements', '/mes-evenements','gicon-list-alt gicon-white')
-				span.round.label #{count_my_event}
-		ul.right
-			//- if (utilisateur.facebook)
-				li
-					img(src="https://graph.facebook.com/" + utilisateur.facebook.id + "/picture")				
-			//- console.log(res.locals.utilisateur)
-			
-			li
-				a(href="/mon-compte")
-					span.gicon-utilisateur.gicon-white
-					span  Mon compte 
-			
-			li
-				a(href="/deconnexion") 
-					span.gicon-off.gicon-white
-		
-			li.has-form
-				a.x-small.button(href='#'  data-reveal-id="inscriptionModal") Inscription
-		
-			li.has-form
-				a.x-small.button(href='#'  data-reveal-id="connexionModal") S'identifier
+				+item(' Trouver une sortie', '/trouver-une-sortie','gicon-search gicon-white')
+				li.divider
+				+item(' Mon planning', '/mon-planning','gicon-calendar gicon-white')
+				li.divider
+				- if (utilisateur)
+					+item(' Mes événements', '/mes-evenements','gicon-list-alt gicon-white')
+						span.round.label #{count_my_event}
+			ul.right
+				
+				//- console.log(res.locals.utilisateur)
+				
+				- if (utilisateur)
+					//- if (utilisateur.facebook)
+						li
+							img(src="https://graph.facebook.com/" + utilisateur.facebook.id + "/picture")
+					li
+						a(href="/mon-compte")
+							span.gicon-user.gicon-white
+							span  Mon compte
+					li
+						a(href="/deconnexion") 
+							span.gicon-off.gicon-white
+				- else
+					li.has-form
+						a.x-small.button(href='#'  data-reveal-id="inscriptionModal") Inscription
+				
+					li.has-form
+						a.x-small.button(href='#'  data-reveal-id="connexionModal") S'identifier

@@ -1,13 +1,41 @@
 extends layout
 
 block content
+	div.row
+		div.large-12.column
+			div.panel
+				h4 informations:
 	div.row(data-equalizer)
-		div.large-8.medium-8.column(data-equalizer-watch)
+		div.large-6.column(data-equalizer-watch)
 			div
 				h4 Bienvenue sur l'officiel des sorties
-		div.large-4.medium-4.column(data-equalizer-watch)
-			div.panel.text-center
-				h4 Pas encore inscrit(e) ?
-				p Cela prend 20 secondes pour pouvoir ensuite s'inscrire à n'importe quel événement
-				a.button(href='#'  data-reveal-id="inscriptionModal") 	<span class="gicon-edit gicon-white large"></span> S'inscrire
+		div.large-6.column(data-equalizer-watch)
+			- if (!utilisateur)
+				div.panel.text-center
+					h4 Pas encore inscrit(e) ?
+					p Cela prend 20 secondes pour pouvoir ensuite s'inscrire à n'importe quel événement
+					a.button(href='#'  data-reveal-id="inscriptionModal") 	<span class="gicon-edit gicon-white large"></span> S'inscrire
+	div.row(data-equalizer)
+		div.large-6.column(data-equalizer-watch)
+			div.text-center
 				
+		div.large-3.column(data-equalizer-watch)
+			div.panel.text-center
+				a.th.radius5
+					img(src="http://lorempixel.com/400/200/people/")
+		div.large-3.column(data-equalizer-watch)
+			div.panel.text-center
+				a.th.radius5
+					img(src="http://lorempixel.com/400/200/people/")
+	div.row(data-equalizer)
+		div.large-6.column(data-equalizer-watch)
+			div.panel.text-center
+				iframe(src="//www.facebook.com/plugins/facepile.php?app_id=1556767574549266&amp;href=http%3A%2F%2Fwww.officiel-des-sorties.fr&amp;action&amp;width=100%25&amp;height=auto&amp;max_rows=20&amp;colorscheme=light&amp;size=small&amp;show_count=true&amp;appId=1556767574549266" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%px; height:autopx;" allowTransparency="true")
+		div.large-3.column(data-equalizer-watch)
+			div.panel.text-center
+				//iframe(src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=1556767574549266" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:258px;" allowTransparency="true")
+		
+		div.large-3.column(data-equalizer-watch)
+			div.panel.text-center
+				//iframe(src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FFacebookDevelopers&amp;width&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=1556767574549266" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:258px;" allowTransparency="true")
+		

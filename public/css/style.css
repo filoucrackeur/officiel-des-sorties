@@ -1,7 +1,99 @@
 @font-face
 {
 	font-family: officieldessorties;
-	src: url(fonts/porkys.ttf);
+	src: url(fonts/officiel.ttf);
+}
+
+body{
+  background-color: #00A1D4;
+  color: #FFF;
+}
+
+.reveal-modal{
+  border-radius: 10px;
+}
+
+.sitename{
+  font-family: officieldessorties;
+  margin: 0;
+  padding: 0;
+  font-size: 500%;
+}
+
+.sitename a {
+  color: #FFF;
+}
+
+a{
+  color: #DE006E;
+}
+
+a.button{
+  background-color: #DE006E;
+  color: #FFF;
+}
+
+h1, h2, h3, h4 {
+  color: #FFF;
+}
+
+table {
+  border: none;
+  border-radius: 5px;
+}
+
+.label{
+  background-color: #DE006E;
+}
+
+label {
+  color: #FFF;
+}
+legend{
+  background-color: #DE006E;
+}
+
+fieldset{
+  border: none;
+}
+
+.panel{
+  background-color: #CFEDF7;
+  border: none;
+  border-radius: 5px;
+}
+
+.top-bar {
+  background-color: #00A1D4;
+}
+
+.top-bar-section .has-form{
+  background-color: #00A1D4;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background-color: #00A1D4;
+}
+.top-bar-section li:not(.has-form) a:not(.button):hover{
+  background-color: #DE006E;
+}
+
+.top-bar-section>ul>.divider, .top-bar-section>ul>[role="separator"]{
+  border: none;
+}
+
+.top-bar-section ul li>a.button:hover {
+  background-color: #DE006E;
+}
+
+.top-bar-section ul li>a.button{
+  background-color: #DE006E;
+  border-radius: 5px;
+  b
+}
+
+.top-bar-section ul {
+  background-color: #00A1D4;
 }
 
 .title-area > li.name > h1 > a{
@@ -9,24 +101,68 @@
 }
 
 .footer {
-  background:#008cba;
+  background:#0F80AA;
   color:#FFF;
   padding-top: 10px;
 }
 
 .footer-bottom {
-  background:#333333;
-  color:#858585;
+  background-color: #00A1D4;
   padding-top: 10px;
 }
 
 .footer-bottom a{
-  color:#FFF;
+  color: #DE006E;
 }
 
 .footer a{
   color:#FFF;
 }
+
+
+
+.bg-blanc{
+  background-color: #FFF;
+}
+.bg-bleu{
+  background-color: #0F80AA;
+}
+.bg-bleu-clair{
+  background-color: #C4E9F6;
+}
+.bg-bleu-fonce{
+  background-color: #0F80AA;
+}
+.bg-rose{
+  background-color: #DE006E;
+}
+
+
+
+.fg-blanc{
+  color: #FFF;
+}
+.fg-bleu{
+  color: #0F80AA;
+}
+.fg-bleu-clair{
+  color: #C4E9F6;
+}
+.fg-bleu-fonce{
+  color: #0F80AA;
+}
+.fg-rose{
+  color: #DE006E;
+}
+
+
+
+
+
+
+
+
+
 
 @font-face {
   font-family: '[set]Foundicons';
