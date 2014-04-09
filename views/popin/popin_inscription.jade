@@ -1,22 +1,39 @@
-div#inscriptionModal.reveal-modal.tiny(data-reveal)
-	h2 Inscription
-		form(method="post" action="/inscription")
-			label
-				input(type="text" id="lastname" name="lastname" placeholder="Nom")
-			label
-				input(type="text" id="firstname" name="firstname" placeholder="Prénom")
-			label Sex
-				input(type="radio" id="sex_f" name="sex" value='F')
-				input(type="radio" id="sex_h" name="sex" value='M')
-			label
-				input(type="text" id="email" name="email" placeholder="Email")
-			label
-				input(type="password" id="password" name="password" placeholder="Mot de passe")
-			label
-				input(type="text" id="pseudo" name="pseudo" placeholder="Choisir un pseudo")
-			label
-				input(type="text" id="birth" name="birth" placeholder="Date de naissance")
-			div.text-center
-				input.button(type="submit" value="Finaliser mon inscription")
-	hr
-	p Vous avez déjà un compte ? <a href="/connexion" data-reveal-id="connexionModal">Se connecter</a>
+div#inscriptionModal.reveal-modal.small(data-reveal)
+	form(method="post" action="/inscription" name="inscription-nouveau-utilisateur" id="inscription-nouveau-utilisateur")
+		div.row
+			div.large-12.columns
+				h2.fg-bleu-fonce Inscription
+		div.row
+			div.large-5
+				label
+					input(type="text" id="lastname" name="lastname" placeholder="Nom" autocomplete="off")
+
+		div.row
+			div.large-5
+				label
+					input(type="text" id="firstname" name="firstname" placeholder="Prénom" autocomplete="off")
+			
+					input(type="radio" id="sex_f" name="sex" value='F')
+					label(for="sex_f") Femme
+					input(type="radio" id="sex_h" name="sex" value='M')
+					label(for="sex_h") Homme
+		label
+			input(type="email" id="email" name="email" placeholder="Email" autocomplete="off")
+		label
+			input(type="password" id="password" name="password" placeholder="Mot de passe" autocomplete="off")
+		label
+			input(type="text" id="pseudo" name="pseudo" placeholder="Choisir un pseudo" autocomplete="off")
+
+		div.row
+			div.large-5
+				label
+					input(type="text" id="birth" name="birth" placeholder="Date de naissance" autocomplete="off")
+		label
+			input(type="text" id="address" name="address" placeholder="Adresse" autocomplete="off")
+
+		div.row
+			div.large-5
+				label
+					input(type="text" id="zipcode" name="zipcode" placeholder="Code postal" autocomplete="off")
+		div.text-center
+			input.button(type="submit" value="Finaliser mon inscription")

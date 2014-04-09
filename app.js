@@ -6,14 +6,23 @@ var express = require('express')
   , passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
   , FacebookStrategy = require('passport-facebook').Strategy
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , restify = require('express-restify-mongoose');
 
 // connexion a la base de données
 mongoose.connect('mongodb://127.0.0.1/officieldessorties')
 
 require('./fixtures/fixtures.js');
 
+var UserModel = require('./models/utilisateur.js');
+var CategorieModel = require('./models/categorie.js');
+var EvenementModel = require('./models/evenement.js');
+
 var app = express();
+
+
+// Authenticator
+//app.use(express.basicAuth('philippe', 'philippe'));
 
 // chargement librairie pour formatage des dates
 app.locals.moment = require('moment');
@@ -31,6 +40,9 @@ app.configure(function(){
   app.use(passport.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  restify.serve(app, CategorieModel,{version: '/v1'});
+  restify.serve(app, UserModel,{version: '/v1'});
+  restify.serve(app, EvenementModel,{version: '/v1'});
 });
 
 app.configure('development', function(){
@@ -43,19 +55,14 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Serveur démarré sur le port " + app.get('port'));
 });
 
-
-
 // chargement du system d'authentification
 require('./config/passport')(passport);
 
 // nombre d'utilisateur connecté
 var connectes = 0;
 
-// nombre d'utilisateur connecté
+// nombre de visiteur connecté
 var visiteurs = 0;
-
-// nombre d'évenement en cours
-var nb_evenements_en_cours = 0;
 
 // nombre d'évenement en cours de l'utilisateur
 var nb_evenements_en_cours_utilisateur = 0;
@@ -70,6 +77,12 @@ sio.sockets.on('connection', function (socket) {
 
   socket.emit('nouveau_visiteur', { visiteurs: visiteurs });
   socket.broadcast.emit('nouveau_visiteur', { visiteurs: visiteurs });
+
+
+  socket.on('nouvelle_demande_inscription_evenement', function(){
+    console.log('une demande inscription recu');
+  });
+  
 
   socket.on('disconnect', function(){
     visiteurs--;

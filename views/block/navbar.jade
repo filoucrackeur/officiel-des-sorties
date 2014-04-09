@@ -6,7 +6,17 @@ mixin item(title, url, icon)
 			span= title
 
 .row
-	h1.sitename: a(href="/") L'officiel des <span class="fg-rose">sorties</span>
+	div.small-12.large-9.columns
+		p.text-left
+			a(href="/")
+				img(src="/img/logo.jpg")
+	- if (utilisateur)
+		div.small-12.large-3.columns
+			p.text-center
+				a.x-small.button.expand#creer-evenement(href="/mes-evenements/nouveau") 
+					span.gicon-edit.gicon-white
+					span  Créer un 
+						strong évenement
 .row
 	nav.top-bar(data-topbar)
 		ul.title-area
@@ -14,19 +24,37 @@ mixin item(title, url, icon)
 				a(href="#")
 		section.top-bar-section
 			ul.left
-				- if (utilisateur)
-					li.has-form
-						a.x-small.button(href="/mes-evenements/nouveau") 
-							span.gicon-edit.gicon-white
-							span  Créer un évenement
-
-				+item(' Trouver une sortie', '/trouver-une-sortie','gicon-search gicon-white')
+				li
+					a(href="/trouver-une-sortie")
+						span.gicon-search.gicon-white
+						span  Trouver 
+							strong une sortie
 				li.divider
-				+item(' Mon planning', '/mon-planning','gicon-calendar gicon-white')
+				li
+					a(href="/trouver-une-sortie-par-categorie")
+						span.gicon-search.gicon-white
+						span  Les 
+							strong Catégories
+				li.divider
+				li
+					a(href="/mon-planning")
+						span.gicon-calendar.gicon-white
+						span  Mon  
+							strong planning
 				li.divider
 				- if (utilisateur)
-					+item(' Mes événements', '/mes-evenements','gicon-list-alt gicon-white')
-						span.round.label #{count_my_event}
+					li
+						a(href="/mes-evenements")
+							span.gicon-list-alt.gicon-white
+							span  Mes  
+								strong événements
+				li.divider
+				- if (utilisateur)
+					li
+						a(href="/mes-invitations")
+							span.gicon-list-alt.gicon-white
+							span  Mes  
+								strong invitations
 			ul.right
 				
 				//- console.log(res.locals.utilisateur)
@@ -38,7 +66,8 @@ mixin item(title, url, icon)
 					li
 						a(href="/mon-compte")
 							span.gicon-user.gicon-white
-							span  Mon compte
+							span  #{utilisateur.local.firstname} 
+								strong #{utilisateur.local.lastname}
 					li
 						a(href="/deconnexion") 
 							span.gicon-off.gicon-white

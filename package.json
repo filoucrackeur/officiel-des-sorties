@@ -20,6 +20,8 @@
     "bcrypt-nodejs": "0.0.3",
     "nodemailer": "~0.6.1",
     "pow-mongoose-fixtures": "~0.3.0",
-    "slugify": "~0.1.0"
+    "slugify": "~0.1.0",
+    "express-restify-mongoose": "~0.6.7",
+    "jquery": "~2.1.0"
   }
 }

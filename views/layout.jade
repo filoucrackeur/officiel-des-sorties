@@ -1,6 +1,6 @@
 doctype html
 //[if IE 9]><html class="lt-ie10 lang="en"><![endif]
-html.no-js(lang='en')
+html.no-js(lang='en' ng-app)
 	head
 		title= title + ' | ' + sitename
 		meta(charset='utf-8')
@@ -25,7 +25,7 @@ html.no-js(lang='en')
 
 		// Pied de page
 		include block/pied_de_page
-		
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js")
 		script(src="https://maps.googleapis.com/maps/api/js?sensor=false&language=fr")
 		script(src="/js/vendor/jquery.js")
 		script(src="/js/vendor/jquery.dataTables.min.js")
@@ -36,4 +36,8 @@ html.no-js(lang='en')
 		script(src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js")
 		script(src="/socket.io/socket.io.js")
 		script(src="/js/vendor/alertify.min.js")
+		script(src="/js/vendor/jquery.vmap.js")
+		script(src="/js/vendor/jquery.vmap.france.js")
 		script(src="/js/app.js")
+
+		block javascripts

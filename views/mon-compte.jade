@@ -2,11 +2,9 @@ extends layout
 
 block content
 	div.row
-		div.small-12.large-12.columns
-			h1 #{title}
-				hr
-	div.row
-		div.small-12.large-12.columns
+		div.small-12.large-12.columns.panel.bg-blanc
+			h1.fg-bleu-fonce #{title}
+			hr
 			//- if (utilisateur.facebook)
 				img(src="https://graph.facebook.com/" + utilisateur.facebook.id + "/picture")
 				p #{utilisateur.facebook.name}
@@ -17,6 +15,17 @@ block content
 				dd.active
 					a(href="#panel2-1") Mes coordonnées
 				dd
-					a(href="#panel2-2") Parametrage
+					a(href="#panel2-2") Paramètrage
 				dd
 					a(href="#panel2-3") Autorisations
+				dd
+					a(href="#panel2-4") Notifications
+			div.tabs-content
+				div.content.active#panel2-1
+					p text onglet 1
+				div.content#panel2-2
+					p text onglet 2
+				div.content#panel2-3
+					p text onglet 3
+				div.content#panel2-4
+					p text onglet 4

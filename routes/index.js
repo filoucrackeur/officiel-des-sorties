@@ -1,8 +1,5 @@
 var sitename = 'L\'officiel des sorties' ;
-
-
 var Evenement = require('./../models/evenement.js');
-
 
 exports.index = function(req, res){
   res.status(200);
@@ -11,6 +8,7 @@ exports.index = function(req, res){
     utilisateur: req.user 
   });
 };
+
 
 exports.mes_evenements = function(req, res){
   res.status(200);
@@ -28,7 +26,7 @@ exports.mes_evenements = function(req, res){
 exports.formulaire_evenement_nouveau = function(req, res){
   res.status(200);
   res.render('evenement/nouveau', { 
-    title: 'Créer un nouvel evenement', 
+    title: 'Créer un nouvel événement', 
     sitename: sitename, 
     utilisateur: req.user });
 };
@@ -75,7 +73,8 @@ exports.creer_evenement = function(req, res){
     city: req.body.city,
     zipcode: req.body.zipcode,
     category: req.body.category,
-    places: req.body.places
+    places: req.body.places,
+    owner: req.body.owner
   });
 
   nouveau_evenement.save(function (err) {
@@ -88,10 +87,9 @@ exports.creer_evenement = function(req, res){
 exports.mon_compte = function(req, res){
   res.status(200);
   res.render('mon-compte', { 
-    title: 'Mon compte ', 
-    sitename: sitename, 
-    active: 'Mon compte', 
-    utilisateur: req.user 
+    title: 'Mon compte', 
+    sitename: sitename,
+    utilisateur: req.user
   });
 };
 
@@ -218,7 +216,7 @@ exports.reseaux_sociaux = function(req, res){
 exports.trouver_une_sortie = function(req, res){
   res.status(200);
   Evenement.find(function(err, evenements){
-    res.render('page/trouver_un_evenement', {
+    res.render('page/trouver-un-evenement', {
       title: 'Trouver une sortie', 
       sitename: sitename,
       evenements: evenements, 

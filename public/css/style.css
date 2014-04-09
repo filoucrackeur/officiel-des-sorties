@@ -46,13 +46,6 @@ table {
   background-color: #DE006E;
 }
 
-label {
-  color: #FFF;
-}
-legend{
-  background-color: #DE006E;
-}
-
 fieldset{
   border: none;
 }
@@ -84,6 +77,10 @@ fieldset{
 
 .top-bar-section ul li>a.button:hover {
   background-color: #DE006E;
+}
+
+small.error{
+  background-color: #DE006E !important;
 }
 
 .top-bar-section ul li>a.button{
@@ -125,7 +122,7 @@ fieldset{
   background-color: #FFF;
 }
 .bg-bleu{
-  background-color: #0F80AA;
+  background-color: #00A1D4;
 }
 .bg-bleu-clair{
   background-color: #C4E9F6;
@@ -140,27 +137,31 @@ fieldset{
 
 
 .fg-blanc{
-  color: #FFF;
+  color: #FFF !important;
 }
 .fg-bleu{
-  color: #0F80AA;
+  color: #00A1D4 !important;
 }
 .fg-bleu-clair{
-  color: #C4E9F6;
+  color: #C4E9F6 !important;
 }
 .fg-bleu-fonce{
-  color: #0F80AA;
+  color: #0F80AA !important;
 }
 .fg-rose{
-  color: #DE006E;
+  color: #DE006E !important
+  ;
 }
 
+#carte-de-france{
+  height: 500px;
+}
 
-
-
-
-
-
+@media only screen and (min-width: 40.063em) { 
+  #creer-evenement{
+    margin-top: 30px;
+  }
+}
 
 
 
