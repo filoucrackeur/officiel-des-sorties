@@ -23,7 +23,6 @@ var app = express();
 // Authenticator
 app.use(express.basicAuth('philippe', 'philippe'));
 
-
 // var categories = CategorieModel.find({}, function(err, categories){
 //   app.set('categories', categories);
 // });
