@@ -1,0 +1,60 @@
+div#creerEvenementModal.reveal-modal.small(data-reveal)
+	div.row
+		div.small-12.large-12.columns
+			h2.fg-bleu-fonce Créer un événement
+			hr
+			form(name="new-evenement" id="new-evenement" enctype="application/json" data-abide)
+				fieldset.fg-bleu-fonce
+					legend Etape 1 : Identification
+					input(type="hidden" value="53484eb490e50f2210a847da" name="owner")
+					div.row
+						div.small-12.large-12.columns.title-field
+							label(for="title") Titre <small>obligatoire</small>
+								input.small-12.large-12.columns(type="text" id="title" placeholder="Titre de votre événement" name="title" required)
+							small.error Votre titre doit contenir que des caractère alpha numérique
+					div.row
+						div.small-12.large-12.columns
+							label(for="description") Description <small>obligatoire</small>
+								textarea.small-12.large-12.columns(type="text" id="description" placeholder="Description de votre événement" name="description")
+					
+					div.row
+						div.small-12.large-12.columns
+							label(for="category") Catégorie <small>obligatoire</small>
+							select(id="category" name="category")
+								option(value='manifestation') Manifestation
+								option(value='concert') Concert
+								option(value='pic-nique') Pic-nique
+								option(value='piscine') Piscine
+					div.row
+						div.small-12.large-12.columns
+							label(for="places") Places disponible <small>obligatoire</small>
+								input.small-5.large-5.columns(type="number" min="1" max="60000000" required="true" id="places" placeholder="Nombre de place disponible pour votre événement" name="places" pattern="integer")
+							small.error Le nombre de place disponible est incorrect
+					div.row
+						div.small-12.large-12.columns
+							input(type="checkbox" id="is_public" name="is_public" checked="checked")
+							label(for="is_public") Rendre public ?
+
+					div.row
+						div.small-12.large-12.columns.address-field
+							label(for="address") Adresse <small>obligatoire</small>
+								input.small-12.large-12.columns(type="text" id="address" placeholder="Adresse de votre événement" name="address" required)
+							small.error L'adresse doit contenir que des caractère alpha numérique
+					div.row
+						div.small-12.large-12.columns.city-field
+							label(for="city") Ville <small>obligatoire</small>
+								input.small-12.large-12.columns(type="text" id="city" placeholder="Ville de votre événement" name="city" required)
+							small.error La ville doit contenir que des lettres
+					div.row
+						div.small-12.large-12.columns.zipcode-field
+							label(for="zipcode") Code Postal <small>obligatoire</small>
+								input.small-12.large-12.columns(type="text" id="zipcode" placeholder="Code postal de votre événement" name="zipcode" required)
+							small.error Le code postal doit contenir que des chiffres
+					div.row
+						div.small-12.large-12.columns
+							button.button.right(type="submit" name="submit" id="btn-creer-evenement") Etape 2 →
+				fieldset.fg-bleu-fonce
+					legend Etape 2 : Géolocalisation
+					div.row
+						div.small-12.large-12.columns
+							

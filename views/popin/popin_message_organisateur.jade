@@ -1,0 +1,12 @@
+div#messageOrganisateurModal.reveal-modal.small(data-reveal)
+	form(method="post" action="#" name="message-organisateur" id="message-organisateur")
+		div.row
+			div.large-12.columns
+				h2.fg-bleu-fonce Message à l'organisateur
+				hr
+		div.row
+			div.large-12.columns
+				label
+					textarea(id="message" name="message" placeholder="Votre message" autocomplete="off")
+		div.text-center
+			input.button(type="submit" value="Envoyer le message")
