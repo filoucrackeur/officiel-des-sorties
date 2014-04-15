@@ -68,7 +68,6 @@ mixin item(title, url, icon)
 						li
 							a(href="/mon-compte")
 								span.gicon-user.gicon-white
-								- console.log(utilisateur)
 								- if (utilisateur)
 									span  #{utilisateur.local.firstname} 
 										strong #{utilisateur.local.lastname}
