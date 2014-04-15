@@ -21,7 +21,7 @@ var EvenementModel = require('./models/evenement.js');
 var app = express();
 
 // Authenticator
-app.use(express.basicAuth('philippe', 'philippe'));
+//app.use(express.basicAuth('philippe', 'philippe'));
 
 // var categories = CategorieModel.find({}, function(err, categories){
 //   app.set('categories', categories);
@@ -31,7 +31,7 @@ app.use(express.basicAuth('philippe', 'philippe'));
 app.locals.moment = require('moment');
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 1337);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon(path.join(__dirname, 'public/favicon.ico')));
