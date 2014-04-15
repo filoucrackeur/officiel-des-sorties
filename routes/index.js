@@ -23,6 +23,18 @@ exports.mes_evenements = function(req, res){
   });
 };
 
+exports.mes_invitations = function(req, res){
+  res.status(200);
+  Evenement.find({owner: req.session.passport.user},function(err, evenements){
+    res.render('mes-invitations', { 
+      title: 'Mes invitations', 
+      sitename: sitename,
+      active: 'Mes inviations', 
+      utilisateur: req.user
+    });
+  });
+};
+
 exports.formulaire_evenement_nouveau = function(req, res){
   res.status(200);
   res.render('evenement/nouveau', { 
@@ -48,6 +60,9 @@ exports.supprimer_evenement = function(req, res){
 exports.evenement = function(req, res){
   res.status(200);
   Evenement.findOne({_id: req.params.id}, function(err, evenement){
+
+    evenement.latitude = 48.8253957;
+    evenement.longitude = 2.3941442;
 
     if (err){throw err;}
     else {

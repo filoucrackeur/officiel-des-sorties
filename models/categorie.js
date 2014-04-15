@@ -1,5 +1,3 @@
-// The model!
-
 var mongoose = require('mongoose')
 var Schema   = mongoose.Schema;
 
@@ -9,7 +7,8 @@ var categorieSchema = new Schema({
 	categories:  Array,
 	icon : { type: String, required: true },
 	sorting : { type: Number, required: true },
-	color: { type: String, required: true }
+	color: { type: String, required: true },
+	slug: { type: String, required: true }
 });
 
-module.exports = mongoose.model('categorie', categorieSchema);;
+module.exports = mongoose.model('categorie', categorieSchema);

@@ -20,9 +20,13 @@ var EvenementModel = require('./models/evenement.js');
 
 var app = express();
 
-
 // Authenticator
 //app.use(express.basicAuth('philippe', 'philippe'));
+
+
+// var categories = CategorieModel.find({}, function(err, categories){
+//   app.set('categories', categories);
+// });
 
 // chargement librairie pour formatage des dates
 app.locals.moment = require('moment');
@@ -40,9 +44,11 @@ app.configure(function(){
   app.use(passport.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
-  restify.serve(app, CategorieModel,{version: '/v1'});
-  restify.serve(app, UserModel,{version: '/v1'});
-  restify.serve(app, EvenementModel,{version: '/v1'});
+
+  // api
+  restify.serve(app, EvenementModel, {strict: true});
+  restify.serve(app, CategorieModel);
+  restify.serve(app, UserModel);
 });
 
 app.configure('development', function(){
@@ -98,6 +104,7 @@ app.get('/', routes.index);
 
 // Liste les categories pour debuter la recherche
 app.get('/trouver-une-sortie', routes.trouver_une_sortie);
+app.get('/trouver-une-sortie/:departement', routes.trouver_une_sortie);
 
 // Liste de evenements de la personne connectée
 app.get('/mes-evenements', routes.mes_evenements);
@@ -105,8 +112,8 @@ app.get('/mes-evenements', routes.mes_evenements);
 // Affiche la page de gestion du compte de la personne connectée
 app.get('/mon-compte', routes.mon_compte);
 
-// Affiche la page formulaire d'ajout nouvel evenement
-app.get('/mes-evenements/nouveau', routes.formulaire_evenement_nouveau);
+// Affiche la page mes invitations
+app.get('/mes-invitations', routes.mes_invitations);
 
 // Affiche la page des condition generales d'utilisation
 app.get('/conditions-generales-d-utilisation', routes.cgu);
@@ -144,11 +151,5 @@ app.get('/nos-partenaires', routes.nos_partenaires);
 // Affiche la page de presse
 app.get('/presse', routes.presse);
 
-// traitement ajout d'evenement
-app.post('/evenement/ajouter', routes.creer_evenement);
-
-// Affiche la page de gestion du compte de la personne connectée
-app.get('/evenement/supprimer/:id', routes.supprimer_evenement);
-
 // Affiche la page detail ou fiche de 
-app.get('/evenement/fiche/:id', routes.evenement);
+app.get('/evenement/:id', routes.evenement);

@@ -1,8 +1,13 @@
-// popin d'inscription
-include ../popin/popin_inscription
+// popin de creation d'un evenement
+- if (utilisateur)
+	include ../popin/popin_evenement_creer
+- else
+	// popin d'inscription
+	include ../popin/popin_inscription
 
-// popin d'authentification
-include ../popin/popin_authentification
+	// popin d'authentification
+	include ../popin/popin_authentification
+
 
 // menu principal de navigation
 include navbar

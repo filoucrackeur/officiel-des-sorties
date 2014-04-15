@@ -3,16 +3,17 @@
 // var mongoose = require('mongoose');
 
 // var Evenement = require('../models/evenement');
-// var Categorie = require('../models/categorie');
-// var Utilisateur = require('../models/utilisateur');
+//var Categorie = require('../models/categorie');
+
+//var Utilisateur = require('../models/utilisateur');
 
 // var Utilisateurs = {utilisateur: []};
 // var Evenements = {evenement: []};
-// var Categories = {categorie: []};
+//var Categories = {categorie: []};
 
  
 
-// exports.philippe = mongoose.Types.ObjectId();
+//exports.philippe = mongoose.Types.ObjectId();
 
 // Utilisateurs.utilisateur.push( 
 // 	{ 
@@ -76,7 +77,8 @@
 // 	categories: [], 
 // 	icon : 'sport',
 // 	sorting : 0,
-// 	color: 'green'
+// 	color: 'green',
+// 	slug : 'sport'
 // });
 
 
@@ -87,7 +89,8 @@
 // 	categories: [], 
 // 	icon : 'politique',
 // 	sorting : 1,
-// 	color: 'blue'
+// 	color: 'blue',
+// 	slug : 'politique'
 // });
 
 // Categories.categorie.push({ 
@@ -97,7 +100,19 @@
 // 	categories: [], 
 // 	icon : 'gastronomie',
 // 	sorting : 1,
-// 	color: 'orange'
+// 	color: 'orange',
+// 	slug : 'gastronomie'
+// });
+
+// Categories.categorie.push({ 
+// 	_id: mongoose.Types.ObjectId(),
+// 	title: 'Economie', 
+// 	description: 'Categorie économie',
+// 	categories: [], 
+// 	icon : 'economie',
+// 	sorting : 1,
+// 	color: 'yellow',
+// 	slug : 'economie'
 // });
 
 
@@ -125,6 +140,6 @@
 
 // // console.log(Categorie.db);
 
-// fixtures.load(Categories, Categorie.db)
+ // fixtures.load(Categories, Categorie.db)
 // fixtures.load(Utilisateurs, Utilisateur.db);
 // fixtures.load(Evenements, Evenement.db);

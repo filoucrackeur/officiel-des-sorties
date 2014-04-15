@@ -59,6 +59,10 @@ fieldset{
 .top-bar {
   background-color: #00A1D4;
 }
+.expanded {
+  background-color: #00A1D4;
+}
+
 
 .top-bar-section .has-form{
   background-color: #00A1D4;
@@ -116,10 +120,13 @@ small.error{
   color:#FFF;
 }
 
-
+fieldset {
+  border: 1px solid #00A1F2;
+}
 
 .bg-blanc{
   background-color: #FFF;
+  color: #0F80AA;
 }
 .bg-bleu{
   background-color: #00A1D4;

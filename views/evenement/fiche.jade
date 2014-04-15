@@ -1,58 +1,73 @@
 extends ../layout
 
 block content
-	div.row
-		div.small-12.large-12.columns
-			h1 #{evenement.title} 
-				span.label(ng-cloak) {{nombre_inscrit}} inscrit(s)
-			hr
-	div.row
-		div.small-12.large-8.columns(ng-controller="ficheCtrl")
-			div.panel.bg-blanc
-				h4.fg-bleu-fonce Informations Pratiques
-				p #{evenement.description}
-				p #{evenement.category}
-			div.panel.bg-blanc(ng-cloak)
-				h4.fg-bleu-fonce Liste des inscrits 
-					span.label.round {{participants.length}}
-				table.small-12.large-12
-					thead
-						tr
-							th Nom
-							th Prénom
-							th Age
-							th Sexe
-					tbody
-						tr(ng-repeat="participant in participants")
-							td {{participant.nom}}
-							td {{participant.prenom}}
-							td {{participant.age}} ans
-							td {{participant.sexe}}
+	// popin d'inscription
+	include ../popin/popin_message_organisateur
+	div(ng-controller="ficheCtrl")
+		div.row
+			div.small-12.large-12.columns
+				h1 #{evenement.title} 
+					span.label(ng-cloak) {{participants.length}} inscrit(s)
+				hr
+		div.row
+			div.small-12.large-8.columns
+				div.panel.bg-blanc
+					h4.fg-bleu-fonce Informations <strong>Pratiques</strong>
+					h5 Description
+					p #{evenement.description}
+					h5 Catégorie
+					p #{evenement.category}
+					h5 Horaires
+					h5 Site internet
+					p #{evenement.horaire}
+				div.panel.bg-blanc(ng-cloak)
+					h4.fg-bleu-fonce Liste des <strong>Participants</strong> 
+						span.label.round
+							strong {{participants.length}}
+					table.small-12.large-12
+						thead
+							tr
+								th Nom
+								th Prénom
+								th Age
+								th Sexe
+						tbody
+							tr(ng-repeat="participant in participants")
+								td {{participant.nom}}
+								td {{participant.prenom}}
+								td {{participant.age}} ans
+								td {{participant.sexe}}
 
-		div.small-12.large-4.columns
-			- if(utilisateur)
-				a#btn-participation.button.expand Je souhaite 
-					strong participer
-			div.panel.bg-blanc
-				h4.fg-bleu-fonce Lieu du rendez-vous
-				div
-					img(src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=263x263&sensor=false")
-			div.panel.bg-blanc
-				h4.fg-bleu-fonce Contacter l'organisateur
-				table.small-12.large-12
-					tbody
-						tr
-							th Catégories
-							td #{evenement.category}
-						tr
-							th Adresse
-							td #{evenement.address}
-						tr
-							th Ville
-							td #{evenement.city}
-						tr
-							th Code postal
-							td #{evenement.zipcode}
+			div.small-12.large-4.columns
+				- if(utilisateur)
+					a#btn-participation.button.expand Je souhaite 
+						strong participer
+				- else
+					a#btn-participation.button.expand(href='#'  data-reveal-id="inscriptionModal") S'inscrire pour 
+						strong participer
+
+				div.panel.bg-blanc
+					h4.fg-bleu-fonce <strong>Lieu</strong> du rendez-vous
+					div
+						img(src="http://maps.googleapis.com/maps/api/staticmap?center=#{evenement.latitude},#{evenement.longitude}&zoom=13&size=263x263&sensor=false")
+				div.panel.bg-blanc
+					h4.fg-bleu-fonce <strong>Contacter</strong> l'organisateur
+					table.small-12.large-12
+						tbody
+							tr
+								th Catégories
+								td #{evenement.category}
+							tr
+								th Adresse
+								td #{evenement.address}
+							tr
+								th Ville
+								td #{evenement.city}
+							tr
+								th Code postal
+								td #{evenement.zipcode}
+					a#btn-contact-organisateur.button.expand(href='#'  data-reveal-id="messageOrganisateurModal") Envoyer un  
+						strong message
 
 block javascripts
 	script(src="/js/controller/ficheCtrl.js")

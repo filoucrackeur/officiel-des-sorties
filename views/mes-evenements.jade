@@ -19,7 +19,7 @@ block content
 							each evenement in evenements
 								tr
 									td
-										a(href='/evenement/fiche/#{evenement._id}' ) #{evenement.title}
+										a(href='/evenement/#{evenement._id}' ) #{evenement.title}
 									td.show-for-large-only #{evenement.description}
 									td.text-center #{moment(evenement.created_at).format('DD/MM/YYYY')}
 									td.text-center 23/133

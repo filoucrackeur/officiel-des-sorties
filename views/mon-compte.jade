@@ -3,6 +3,7 @@ extends layout
 block content
 	div.row
 		div.small-12.large-12.columns.panel.bg-blanc
+			- console.log(title)
 			h1.fg-bleu-fonce #{title}
 			hr
 			//- if (utilisateur.facebook)
@@ -15,17 +16,37 @@ block content
 				dd.active
 					a(href="#panel2-1") Mes coordonnées
 				dd
-					a(href="#panel2-2") Paramètrage
+					a.bg-bleu-clair(href="#panel2-2") Paramètrages
 				dd
 					a(href="#panel2-3") Autorisations
 				dd
 					a(href="#panel2-4") Notifications
 			div.tabs-content
 				div.content.active#panel2-1
-					p text onglet 1
+					form
+						fieldset
+							legend.fg-bleu-fonce Vos informations personnelles
+							.row
+								.large-12.columns
+									label Email: 
+										input(disabled="disabled" value="#{utilisateur.facebook.email}")
+							.row
+								.large-12.columns
+									label Prénom: 
+										input(disabled="disabled" value="#{utilisateur.local.firstname}")
+							.row
+								.large-12.columns
+									label Nom: 
+										input(disabled="disabled" value="#{utilisateur.local.lastname}")
 				div.content#panel2-2
-					p text onglet 2
+					form
+						fieldset
+							legend.fg-bleu-fonce Paramètrages de votre compte
 				div.content#panel2-3
-					p text onglet 3
+					form
+						fieldset
+							legend.fg-bleu-fonce Gestion des Autorisations
 				div.content#panel2-4
-					p text onglet 4
+					form
+						fieldset
+							legend.fg-bleu-fonce Paramètrage des Notifications

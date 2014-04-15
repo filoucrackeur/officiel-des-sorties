@@ -4,32 +4,52 @@ block content
 	div.row
 		div.large-12.column
 			div#carte-de-france
+	//div.row
+		div.large-12.column
+			ul.no-bullet
+				li(ng-repeat="categorie in categories")
+				li <strong><a href="#politique">Politique</a></strong>
+				li <strong>Sport</strong>
+				li <strong>Mode</strong>
+				li <strong>High-Tech</strong>
+				li <strong>Découvertes</strong>
+				li <strong>Economie</strong>
+				li <strong>Culture</strong>
+				li <strong>Planète</strong>
 	div.row(data-equalizer)
 		div.large-6.column
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Politique
+						h5.fg-bleu-fonce POLITIQUE
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Sport
+						h5.fg-bleu-fonce SPORT
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Mode
+						h5.fg-bleu-fonce MODE
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Hight tech
+						h5.fg-bleu-fonce HIGH-TECH
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Rencontres
+						h5.fg-bleu-fonce DECOUVERTES
 			div.large-6.column(data-equalizer-watch)
 				div.panel.bg-blanc
 					div.text-center
-						h5.fg-bleu-fonce Le <strong>top 10</strong> des évenements en cours
+						h5.fg-bleu-fonce ECONOMIE
+			div.large-6.column(data-equalizer-watch)
+				div.panel.bg-blanc
+					div.text-center
+						h5.fg-bleu-fonce CULTURE
+			div.large-6.column(data-equalizer-watch)
+				div.panel.bg-blanc
+					div.text-center
+						h5.fg-bleu-fonce PLANETE
 		div.large-6.column
 			div.panel.bg-blanc
 				h5.fg-bleu-fonce Le <strong>top 10</strong> des évenements en cours
@@ -73,7 +93,7 @@ block content
 					img(src="http://lorempixel.com/400/200/people/")
 	div.row(data-equalizer)
 		div.large-6.column(data-equalizer-watch)
-			div.text-center
+			div.text-center.panel.bg-blanc
 				iframe(src="//www.facebook.com/plugins/facepile.php?app_id=1556767574549266&amp;href=http%3A%2F%2Fwww.officiel-des-sorties.fr&amp;action&amp;width=100%25&amp;height=auto&amp;max_rows=20&amp;colorscheme=light&amp;size=small&amp;show_count=true&amp;appId=1556767574549266" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%px; height:autopx;" allowTransparency="true")
 		div.large-3.column(data-equalizer-watch)
 			div.text-center
